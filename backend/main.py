@@ -15,10 +15,6 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/api")
-async def root():
-    return {"message": "Hello World"}
-
 @app.get("/api/immobilien")
 def get_immobilien(db: Session = Depends(get_db)):
     all_immobilien = db.query(models.Immobilien).all()
